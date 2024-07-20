@@ -1,0 +1,15 @@
+dk/brics/automaton/SpecialOperationsTest.class
+dk/brics/automaton/AutomatonTest.class
+dk/brics/automaton/StatePairTest.class
+dk/brics/automaton/TransitionTest.class
+dk/brics/automaton/DatatypesAutomatonProviderTest.class
+dk/brics/automaton/AutomatonMatcherTest.class
+dk/brics/automaton/RunAutomatonTest.class
+dk/brics/automaton/TransitionComparatorTest.class
+dk/brics/automaton/ShuffleOperationsTest.class
+dk/brics/automaton/DatatypesTest.class
+dk/brics/automaton/MinimizationOperationsTest.class
+dk/brics/automaton/StateTest.class
+dk/brics/automaton/BasicOperationsTest.class
+dk/brics/automaton/StringUnionOperationsTest.class
+dk/brics/automaton/RunAutomatonTestUnit.class

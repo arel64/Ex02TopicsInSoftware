@@ -1,0 +1,3115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>State.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * dk.brics.automaton</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2001-2017 Anders Moeller</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * All rights reserved.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Redistribution and use in source and binary forms, with or without</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * modification, are permitted provided that the following conditions</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * are met:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * 1. Redistributions of source code must retain the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *    notice, this list of conditions and the following disclaimer.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * 2. Redistributions in binary form must reproduce the above copyright</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *    notice, this list of conditions and the following disclaimer in the</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *    documentation and/or other materials provided with the distribution.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * 3. The name of the author may not be used to endorse or promote products</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *    derived from this software without specific prior written permission.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS&#39;&#39; AND ANY EXPRESS OR</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package dk.brics.automaton;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.io.Serializable;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Arrays;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Collection;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.HashSet;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Set;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;code&#62;Automaton&#60;/code&#62; state. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @author Anders M&#38;oslash;ller &#38;lt;&#60;a href=&#34;mailto:amoeller@cs.au.dk&#34;&#62;amoeller@cs.au.dk&#60;/a&#62;&#38;gt;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class State implements Serializable, Comparable&#60;State&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;static final long serialVersionUID = 30001;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;boolean accept;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;Set&#60;Transition&#62; transitions;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;int number;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;int id;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;static int next_id;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Constructs a new state. Initially, the new state is a reject state. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;public State() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_59'/>
+59
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_59'>1</a>
+<span>
+1. &#60;init&#62; : removed call to dk/brics/automaton/State::resetTransitions &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;resetTransitions();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_60'/>
+60
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_60'>1</a>
+<span>
+1. &#60;init&#62; : Replaced integer addition with subtraction &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>&#9;&#9;id = next_id++;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Resets transition set. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;final void resetTransitions() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;transitions = new HashSet&#60;Transition&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Returns the set of outgoing transitions. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Subsequent changes are reflected in the automaton.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return transition set</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public Set&#60;Transition&#62; getTransitions()&#9;{</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_76'/>
+76
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_76'>1</a>
+<span>
+1. getTransitions : replaced return value with Collections.emptySet for dk/brics/automaton/State::getTransitions &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return transitions;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Adds an outgoing transition.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param t transition</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public void addTransition(Transition t)&#9;{</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;transitions.add(t);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Sets acceptance for this state.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param accept if true, this state is an accept state</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_90'/>
+90
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_90'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public void setAccept(boolean accept) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;this.accept = accept;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_93'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_94'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_96'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Returns acceptance status.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return true is this is an accept state</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_98'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_99'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public boolean isAccept() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_100'/>
+100
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_100'>2</a>
+<span>
+1. isAccept : replaced boolean return with true for dk/brics/automaton/State::isAccept &rarr; KILLED<br/>
+2. isAccept : replaced boolean return with false for dk/brics/automaton/State::isAccept &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return accept;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_101'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_102'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_103'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_104'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Performs lookup in transitions, assuming determinism. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_105'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param c character to look up</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_106'/>
+106
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_106'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return destination state, null if no matching outgoing transition</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_107'/>
+107
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_107'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @see #step(char, Collection)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_108'/>
+108
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_108'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_109'/>
+109
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_109'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public State step(char c) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_110'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;for (Transition t : transitions)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_111'/>
+111
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_111'>4</a>
+<span>
+1. step : negated conditional &rarr; KILLED<br/>
+2. step : negated conditional &rarr; KILLED<br/>
+3. step : changed conditional boundary &rarr; KILLED<br/>
+4. step : changed conditional boundary &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;&#9;if (t.min &#60;= c &#38;&#38; c &#60;= t.max)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_112'/>
+112
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_112'>1</a>
+<span>
+1. step : replaced return value with null for dk/brics/automaton/State::step &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;&#9;&#9;return t.to;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_113'/>
+113
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_113'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_114'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_115'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_116'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_117'/>
+117
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_117'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Performs lookup in transitions, allowing nondeterminism.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_118'/>
+118
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_118'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param c character to look up</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_119'/>
+119
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_119'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param dest collection where destination states are stored</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_120'/>
+120
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_120'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @see #step(char)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_121'/>
+121
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_121'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_122'/>
+122
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_122'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public void step(char c, Collection&#60;State&#62; dest) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_123'/>
+123
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_123'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;for (Transition t : transitions)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_124'/>
+124
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_124'>4</a>
+<span>
+1. step : changed conditional boundary &rarr; KILLED<br/>
+2. step : negated conditional &rarr; KILLED<br/>
+3. step : changed conditional boundary &rarr; KILLED<br/>
+4. step : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;&#9;if (t.min &#60;= c &#38;&#38; c &#60;= t.max)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_125'/>
+125
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_125'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;&#9;dest.add(t.to);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_126'/>
+126
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_126'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_127'/>
+127
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_127'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_128'/>
+128
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_128'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;void addEpsilon(State to) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_129'/>
+129
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_129'>1</a>
+<span>
+1. addEpsilon : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;if (to.accept)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_130'/>
+130
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_130'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;accept = true;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_131'/>
+131
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_131'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;transitions.addAll(to.transitions);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_132'/>
+132
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_132'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_133'/>
+133
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_133'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_134'/>
+134
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_134'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** Returns transitions sorted by (min, reverse max, to) or (to, min, reverse max) */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_135'/>
+135
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_135'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;Transition[] getSortedTransitionArray(boolean to_first) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_136'/>
+136
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_136'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;Transition[] e = transitions.toArray(new Transition[transitions.size()]);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_137'/>
+137
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_137'>1</a>
+<span>
+1. getSortedTransitionArray : removed call to java/util/Arrays::sort &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;Arrays.sort(e, new TransitionComparator(to_first));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_138'/>
+138
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_138'>1</a>
+<span>
+1. getSortedTransitionArray : replaced return value with null for dk/brics/automaton/State::getSortedTransitionArray &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return e;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_139'/>
+139
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_139'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_140'/>
+140
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_140'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_141'/>
+141
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_141'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_142'/>
+142
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_142'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Returns sorted list of outgoing transitions.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_143'/>
+143
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_143'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param to_first if true, order by (to, min, reverse max); otherwise (min, reverse max, to)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_144'/>
+144
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_144'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return transition list</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_145'/>
+145
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_145'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_146'/>
+146
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_146'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public List&#60;Transition&#62; getSortedTransitions(boolean to_first)&#9;{</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_147'/>
+147
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_147'>1</a>
+<span>
+1. getSortedTransitions : replaced return value with Collections.emptyList for dk/brics/automaton/State::getSortedTransitions &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return Arrays.asList(getSortedTransitionArray(to_first));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_148'/>
+148
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_148'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_149'/>
+149
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_149'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_150'/>
+150
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_150'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/** </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_151'/>
+151
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_151'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Returns string describing this state. Normally invoked via </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_152'/>
+152
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_152'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * {@link Automaton#toString()}. </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_153'/>
+153
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_153'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_154'/>
+154
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_154'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;@Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_155'/>
+155
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_155'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_156'/>
+156
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_156'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;StringBuilder b = new StringBuilder();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_157'/>
+157
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_157'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;b.append(&#34;state &#34;).append(number);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_158'/>
+158
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_158'>1</a>
+<span>
+1. toString : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;if (accept)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_159'/>
+159
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_159'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;b.append(&#34; [accept]&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_160'/>
+160
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_160'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;else</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_161'/>
+161
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_161'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;b.append(&#34; [reject]&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_162'/>
+162
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_162'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;b.append(&#34;:\n&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_163'/>
+163
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_163'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;for (Transition t : transitions)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_164'/>
+164
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_164'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;b.append(&#34;  &#34;).append(t.toString()).append(&#34;\n&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_165'/>
+165
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_165'>1</a>
+<span>
+1. toString : replaced return value with &#34;&#34; for dk/brics/automaton/State::toString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return b.toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_166'/>
+166
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_166'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_167'/>
+167
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_167'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_168'/>
+168
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_168'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_169'/>
+169
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_169'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * Compares this object with the specified object for order.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_170'/>
+170
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_170'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * States are ordered by the time of construction.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_171'/>
+171
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_171'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_172'/>
+172
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_172'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public int compareTo(State s) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_173'/>
+173
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_173'>2</a>
+<span>
+1. compareTo : Replaced integer subtraction with addition &rarr; KILLED<br/>
+2. compareTo : replaced int return with 0 for dk/brics/automaton/State::compareTo &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return s.id - id;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_174'/>
+174
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_174'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_175'/>
+175
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_175'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_176'/>
+176
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_176'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_177'/>
+177
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_177'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * See {@link java.lang.Object#equals(java.lang.Object)}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_178'/>
+178
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_178'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_179'/>
+179
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_179'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;@Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_180'/>
+180
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_180'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public boolean equals(Object obj) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_181'/>
+181
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_181'>2</a>
+<span>
+1. equals : replaced boolean return with false for dk/brics/automaton/State::equals &rarr; KILLED<br/>
+2. equals : replaced boolean return with true for dk/brics/automaton/State::equals &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return super.equals(obj);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_182'/>
+182
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_182'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_183'/>
+183
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_183'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_184'/>
+184
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_184'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_185'/>
+185
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_185'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * See {@link java.lang.Object#hashCode()}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_186'/>
+186
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_186'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_187'/>
+187
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_187'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;@Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_188'/>
+188
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_188'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public int hashCode() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_189'/>
+189
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_189'>1</a>
+<span>
+1. hashCode : replaced int return with 0 for dk/brics/automaton/State::hashCode &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>&#9;&#9;return super.hashCode();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_190'/>
+190
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_190'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_191'/>
+191
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_191'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_59'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStateConstruction()]</span></span> removed call to dk/brics/automaton/State::resetTransitions &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_60'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_76'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTransitions<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testResetTransitions()]</span></span> replaced return value with Collections.emptySet for dk/brics/automaton/State::getTransitions &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_100'>100</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_100'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAccept<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testEpsilonNoAccept()]</span></span> replaced boolean return with true for dk/brics/automaton/State::isAccept &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAccept<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testEpsilonNoAccept()]</span></span> replaced boolean return with false for dk/brics/automaton/State::isAccept &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_111'>111</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_111'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepNoMatch()]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepNoMatch()]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStep()]</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStep()]</span></span> changed conditional boundary &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_112'>112</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_112'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStep()]</span></span> replaced return value with null for dk/brics/automaton/State::step &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_124'>124</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_124'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()]</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()]</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>step<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_129'>129</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_129'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addEpsilon<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testEpsilonNoAccept()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_137'>137</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_137'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSortedTransitionArray<br/><b>Killed by : </b>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSubstWithMap()]</span></span> removed call to java/util/Arrays::sort &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_138'>138</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_138'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSortedTransitionArray<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:getSortedTransitionList()]</span></span> replaced return value with null for dk/brics/automaton/State::getSortedTransitionArray &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_147'>147</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_147'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getSortedTransitions<br/><b>Killed by : </b>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSingleChars()]</span></span> replaced return value with Collections.emptyList for dk/brics/automaton/State::getSortedTransitions &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_158'>158</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_158'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testToString_RejectStateWithoutTransitions()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_165'>165</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_165'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testToString_RejectStateWithoutTransitions()]</span></span> replaced return value with &#34;&#34; for dk/brics/automaton/State::toString &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_173'>173</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_173'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>compareTo<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:compareTest()]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>compareTo<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:compareTestNonEqual()]</span></span> replaced int return with 0 for dk/brics/automaton/State::compareTo &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_181'>181</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_181'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStep()]</span></span> replaced boolean return with false for dk/brics/automaton/State::equals &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>equals<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()]</span></span> replaced boolean return with true for dk/brics/automaton/State::equals &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5ae85b0c_189'>189</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5ae85b0c_189'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>hashCode<br/><b>Killed by : </b>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:hashCodeTest()]</span></span> replaced int return with 0 for dk/brics/automaton/State::hashCode &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStep()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepExactlyOneMatchHigh()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepExactlyOneMatchLow()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepMatchRange()] (0 ms)</li><li>dk.brics.automaton.DatatypesAutomatonProviderTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesAutomatonProviderTest]/[method:testGetAutomatonWithUnicodeCategoryName()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfSingletonAndNonSingleton()] (0 ms)</li><li>dk.brics.automaton.DatatypesAutomatonProviderTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesAutomatonProviderTest]/[method:testGetAutomatonWithUnicodeBlockName()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfSingletonVsNonSingleton()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testPrefixClose()] (0 ms)</li><li>dk.brics.automaton.DatatypesAutomatonProviderTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesAutomatonProviderTest]/[method:testGetAutomatonWithAllFeaturesEnabled()] (2 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testGetSize()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testGetCharIntervals()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testNewMatcherWithOffsets()] (0 ms)</li><li>dk.brics.automaton.DatatypesAutomatonProviderTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesAutomatonProviderTest]/[method:testGetAutomatonWithXMLName()] (12 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testToString()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testStore()] (4 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testLoadFromStream()] (4 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#8] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#9] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#8] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSingleChars()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#9] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSingleCharsWithSingletonAutomaton()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTestUnit.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTestUnit]/[method:testLoadFromUrl()] (15 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testCompress()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testTrim()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testCheckMinimizeAlways()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsOneSingleton()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeHopcroftAutomaton()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeAutomatonWithMultipleStates()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#18] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#17] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testHexCases()] (3 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#18] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#17] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeIntegerValue()] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#11] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#6] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#2] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#5] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#11] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#12] (1 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeDecimalValue()] (3 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#6] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#2] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#5] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#3] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#15] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#12] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#15] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#16] (2 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#16] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#10] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#14] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#13] (1 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#13] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#14] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#10] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeMinInteger()] (2 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeMaxInteger()] (2 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeFractionDigits()] (4 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#1] (18 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeTotalDigits()] (16 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepCollectionNDA()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testRepeatWithMinAndMax()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testRepeatWithMinOne()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testHomomorph()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSubstWithCharAndString()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSubstWithMap()] (1 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testReplaceWhitespace()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleBasic()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testEpsilonNoAccept()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testEpsilonAccept()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testOptional()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testUnionSingleAutomaton()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testRepeatWithMinZero()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testConcatenateMixedAutomatons()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testTrim()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeBrzozowskiAutomaton()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testOverlap()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testBuildAll()] (2184 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testGetSecondState()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testConstructor_SingleChar()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testGetFirstState()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testGetDest()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testConstructorWithThreeArguments()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testConstructor_CharInterval()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testConstructorWithTwoArguments()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testConstructor_CharIntervalReversed()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:hashCodeTest()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:hashCodeTestEqual()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testHashCode()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetFiniteStringsWithLimit()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testIsFinite()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetCommonPrefix()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetFiniteStrings()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testIsFinite()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testPrefixClose()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testGetFiniteStrings()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testRecomputeHashCode()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testToStringNonSingleton()] (1 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleConfigurationEqualsAndHashCode()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddBasicTransition()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithSurrogate()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithHighSurrogateBegin()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithHighSurrogateEnd()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithSurrogateEdgeCase()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testReduce()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSubsetOf()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfWithDifferentAcceptStates()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfNonSingletonsWithDifferentAcceptStates()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithResumeShuffleMinLessThanResume()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithResumeShuffle()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithResumeShuffleLessThanMax()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithSuspendShuffleMinLessThanSuspend()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithSuspendShuffleLessThanMax()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testAddWithSuspendShuffle()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeCharSet()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfEmptyAutomaton()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfNonSingletonsWithDifferentTransitions()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfNonSingletonsWithTransitions()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testRestoreInvariant()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfComplexAutomatons()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSingleChars()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#4] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testRemoveDeadTransitions()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:pos_found_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#7] (1 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testShuffle()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testHomomorph()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testCompress()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#7] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testBuildMap()] (0 ms)</li><li>dk.brics.automaton.RunAutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.RunAutomatonTest]/[test-template:boolean_matches_as_expected(int, int, dk.brics.automaton.RegExp, java.lang.String)]/[test-template-invocation:#4] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testCloneExpandedIfRequiredNoMutation()] (13 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSubstWithMap()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSubstWithCharAndString()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testPutWith()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testProjectChars()] (2 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testReplaceWhitespace()] (1 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleSubsetOfSingleAutomaton()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleWithSuspendResume()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleEmptyAutomaton()] (1 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleSubsetOfMultipleAutomata()] (0 ms)</li><li>dk.brics.automaton.AutomatonMatcherTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonMatcherTest]/[method:testFindEmptyStringMatch()] (4 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testGetCommonPrefix()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeStringUnion()] (1 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeValmariAutomaton()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeHuffmanAutomaton()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeHuffmanWithDifferentAcceptanceStates()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testOverlap()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeHuffman()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testToDot()] (115 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:getSortedTransitionList()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:getSortedTransitionArrayTestToFirst()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepNoMatch()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testSetAccept()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:compareTestNonEqual()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:compareTest()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testToString_RejectStateWithoutTransitions()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testToString_AcceptStateWithTransitions()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testToString_RejectStateWithTransitions()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testResetTransitionsNaive()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testResetTransitions()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testAddTransition()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStateConstruction()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepNullState()] (0 ms)</li><li>dk.brics.automaton.StateTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StateTest]/[method:testStepMatch()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSetMinimizeAlways()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsSameObject()] (0 ms)</li><li>dk.brics.automaton.ShuffleOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.ShuffleOperationsTest]/[method:testShuffleSubsetOfEmptyAutomaton()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSetDeterministic()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSetInfo()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfSameAutomaton()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetSingleton()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsDifferentType()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_T2ToNull()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeString()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testGetMin()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfSingletonsEqual()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_T2ToNull()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_AllSame()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testHashCodeNonZero()] (1 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsDifferentSecondState()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_T1ToNull()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_T1ToNull()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetInfo()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfDifferentAutomatons()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsDifferentSingletons()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testMakeCharAutomaton()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeEmpty()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testMakeStringAutomaton()] (1 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfSingletonsNotEqual()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetAllowMutate()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsSameObject()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsDifferentFirstState()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeEmptyString()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_SameTo_MinDifferent()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSetAllowMutate()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_T1GreaterThanT2()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testIsSingleton()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_SameTo_MinSame_MaxDifferent()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsDifferentClassObject()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfNonSubset()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testMakeCodePoint()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_SameTo_MinDifferent()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testGetMax()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_T1LessThanT2()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsDifferentObjects()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeAnyString()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsEqualObjects()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testStatesAgreeWhenTransitionsDoNotOverlap()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_SameTo_MinSame_MaxDifferent()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsBothSingletons()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_True_AllSame()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testHashCode()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testClone()] (0 ms)</li><li>dk.brics.automaton.StatePairTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StatePairTest]/[method:testEqualsNullObject()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeChar()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testSetMinimization()] (1 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMinus()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Under0x1000()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeCharRange()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Quote()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testConcatenate()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testEqualsDifferentHashCode()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testStatesAgreeWithMultipleTransitionsAndOverlap()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testToString()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Under0x10()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testStatesAgreeWithMultipleTransitionsAndNoOverlap()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_NormalChar()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testGetStrings()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testConcatenateEmptyList()] (0 ms)</li><li>dk.brics.automaton.DatatypesTest.[engine:junit-jupiter]/[class:dk.brics.automaton.DatatypesTest]/[method:testMakeCharRangeAutomaton()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testStatesAgreeWhenTransitionsOverlapAndNotMarked()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Above0x1000()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testMinimizeSingletonAutomaton()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_ControlChar()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Under0x100()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_T1GreaterThanT2()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testRepeatMinGreaterThanMax()] (0 ms)</li><li>dk.brics.automaton.MinimizationOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.MinimizationOperationsTest]/[method:testStatesAgreeWhenTransitionsOverlapAndMarked()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testMinusSameAutomaton()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_DelChar()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString_Backslash()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testSubstWithEmptyMap()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeAnyChar()] (0 ms)</li><li>dk.brics.automaton.TransitionComparatorTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionComparatorTest]/[method:testCompare_ToFirst_False_T1LessThanT2()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testMinus()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testToStringSingleton()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testConcatenateAllSingletons()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testIsDebug()] (1 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testIntersection()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testIntersectionDifferentAutomatons()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testMinusSingletonA2DoesNotRunA1Singleton()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testSubsetOfEmptyAutomatonWithNonEmpty()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testEquals()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendDot()] (0 ms)</li><li>dk.brics.automaton.TransitionTest.[engine:junit-jupiter]/[class:dk.brics.automaton.TransitionTest]/[method:testAppendCharString()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testCloneExpandedIfRequiredAllowMutation()] (2 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testConcatenateWithEmptyAutomaton()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testMinusWithEmpty()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testIntersectionWithEmpty()] (0 ms)</li><li>dk.brics.automaton.SpecialOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.SpecialOperationsTest]/[method:testGetStrings()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testUnionCollection()] (0 ms)</li><li>dk.brics.automaton.BasicOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.BasicOperationsTest]/[method:testMinusSingletonA2RunsA1Singleton()] (2 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeStringMatcher()] (0 ms)</li><li>dk.brics.automaton.AutomatonTest.[engine:junit-jupiter]/[class:dk.brics.automaton.AutomatonTest]/[method:testMakeInterval()] (0 ms)</li><li>dk.brics.automaton.StringUnionOperationsTest.[engine:junit-jupiter]/[class:dk.brics.automaton.StringUnionOperationsTest]/[method:testBuild()] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.16.0
+
+</body>
+</html>
